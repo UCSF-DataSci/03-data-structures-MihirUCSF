@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Mihir Kalyanthaya
+# 9/28/24
 """
 Word Frequency Counter
 
@@ -21,15 +23,20 @@ import sys
 
 def word_frequency(text):
     frequencies = {} # Dictionary to store word frequencies
-
-    # Your code here
-    
-    return frequencies
+    words = text.lower().split()
+    for word in words:
+        clean_text = ''.join(char for char in word if char.isalpha()
+        if clean_text:
+            if clean_text in frequencies:
+                frequencies[clean_text]+=1
+            else:
+                frequencies[clean_text]=1
+    return dict(sorted(frequencies.items()))
 
 # Scaffold for opening a file and running word_frequency() on the contents
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: python word_frequency.py <input_file>")
+        print("Usage: python word_frequency.py alice_in_wonderland.txt")
         sys.exit(1)
     
     filename = sys.argv[1]
